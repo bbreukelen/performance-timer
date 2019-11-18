@@ -11,6 +11,7 @@
 
 var startPoint = 0,
   points = [],
+  rollups = {},
   stopPoint = 0,
   totalTime = 0;
 
@@ -43,6 +44,16 @@ function process() {
   for (var c=0; c < (points || []).length; c++) {
     points[c].passed = c === 0 ? points[c].ts - startPoint.getTime() : points[c].ts - points[c-1].ts;
     points[c].perc = Math.round(points[c].passed / totalTime * 100);
+
+    if (!rollups[points[c].name]) {
+      rollups[points[c].name] = {
+        passed: points[c].passed,
+        count: 1
+      };
+    } else {
+      rollups[points[c].name].passed = rollups[points[c].name].passed + points[c].passed;
+      rollups[points[c].name].count++;
+    }
   }
 }
 
@@ -53,9 +64,17 @@ function show() {
   console.log("Started at: " + startPoint.toISOString());
   console.log("Stopped at: " + stopPoint.toISOString());
   console.log("Total time: " + totalTime + "ms");
-  console.log("Points:");
+  console.log("Consolidated logs:");
+  Object.keys(rollups || {}).forEach(showRollup);
+  console.log("==========================================================================");
+  console.log("App logs:");
   (points || []).forEach(showPoint);
   console.log("==========================================================================");
+}
+
+function showRollup(k) {
+  var p = rollups[k];
+  console.log(p.passed + "ms (" + Math.round(p.passed / totalTime * 100) + "%): " + k);
 }
 
 function showPoint(p) {
