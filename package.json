@@ -1,5 +1,5 @@
 {
-  "name": "performance-timer",
+  "name": "@futuresoftware/performance-timer",
   "version": "1.0.0",
   "description": "To be used to measure the time each step in a process takes. Gives a nice summary at completion.",
   "main": "index.js",
