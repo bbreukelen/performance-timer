@@ -1,0 +1,24 @@
+{
+  "name": "performance-timer",
+  "version": "1.0.0",
+  "description": "To be used to measure the time each step in a process takes. Gives a nice summary at completion.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbreukelen/performance-timer.git"
+  },
+  "keywords": [
+    "node",
+    "performance",
+    "timer"
+  ],
+  "author": "Future Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbreukelen/performance-timer/issues"
+  },
+  "homepage": "https://github.com/bbreukelen/performance-timer#readme"
+}
