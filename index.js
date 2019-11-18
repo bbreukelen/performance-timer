@@ -74,7 +74,7 @@ function show() {
 
 function showRollup(k) {
   var p = rollups[k];
-  console.log(p.passed + "ms (" + Math.round(p.passed / totalTime * 100) + "%): " + k);
+  console.log(p.passed + "ms (" + Math.round(p.passed / totalTime * 100) + "%): " + k + " + (seen " + p.count + " times)");
 }
 
 function showPoint(p) {
